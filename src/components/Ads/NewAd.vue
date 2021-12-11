@@ -40,7 +40,7 @@
 						<v-switch
                             v-model="promo"
                             label="Ad to Promo?"
-                                ></v-switch>
+                        ></v-switch>
 						</v-flex>
 					</v-layout> 
 					<v-layout row>  
@@ -60,7 +60,23 @@
 export default {
 	data () { 
 		return {
+		valid: false,
+		title: "",
+		description: "",
+		promo: false
 		} 	
+	},
+	methods: {
+		createAd(){
+			if (this.$refs.form.validate()){
+			const ad = {
+				title: this.title,
+				desc: this.description,
+				promo: this.promo
+			}
+			console.log(ad)
+			}
+		}
 	}
 } 
 </script>
