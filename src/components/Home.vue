@@ -10,9 +10,7 @@
 					:src="ad.src"
 					>
                     <div class="ad-link">
-							<v-btn 
-                            class= "error" 
-                            :to="'/ad/' + ad.id"> 
+							<v-btn class= "error" :to="'/ad/' + ad.id"> 
                                 {{ad.title}}
 							</v-btn>
                     </div>
