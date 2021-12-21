@@ -32,7 +32,7 @@ export default {
 	]
 },
     getters: {
-        ads(state) {
+            ads(state) {
             return state.ads
         },
         promoAds(state) {
