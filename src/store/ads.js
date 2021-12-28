@@ -1,5 +1,5 @@
 export default {
-    state: {
+	state: {
 		ads:[
 			{
 				title:"First",
@@ -29,20 +29,37 @@ export default {
 				src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
 				id:"4"
 			}
-	]
-},
-    getters: {
-            ads(state) {
-            return state.ads
-        },
-        promoAds(state) {
-            return state.ads.filter(ad => {
-                return ad.promo
-            })
-        },
-        myAds(state) {
-            return state.ads
-        }
-}
 
+			]
+	},
+	mutations: {
+		createAd(state, payload){
+			state.ads.push(payload)
+		}
+	},
+	actions: {
+		createAd({commit},payload){
+			payload.id = Math.random()
+			commit('createAd', payload)
+		}
+	},
+	getters: {
+		ads(state) {
+			return state.ads
+		},
+		promoAds(state) {
+			return state.ads.filter(ad => {
+				return ad.promo
+			})
+		},
+		myAds(state) {
+			return state.ads
+		},
+		adById(state) {
+			return id => {
+				return state.ads.find(ad => ad.id == id)
+			}
+		}
+
+	}
 }
