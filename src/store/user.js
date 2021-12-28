@@ -6,7 +6,7 @@ export default {
 	actions: {},
 	getters: {
      user(state) {
-            	return state.user
+            return state.user
 	}
 }
 }
