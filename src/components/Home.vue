@@ -1,5 +1,5 @@
 <template> 
-	<div>
+	<div v-if="!loading">
 		<v-container>
 		<v-layout row> 
 			<v-flex xs12>
@@ -47,6 +47,20 @@
 		</v-layout> 
 		</v-container>
     </div>
+	<div v-else>
+	<v-container>
+	<v-layout row>
+	<v-flex xs12 sm2 offset-sm6 class="mt-5">
+	<v-progress-circular 
+    :size="70"
+    :width="7"
+    color="primary"
+    indeterminate
+    ></v-progress-circular>
+	</v-flex>
+	</v-layout>
+	</v-container>
+	</div>
 </template>
 <script>
 export default {
@@ -59,7 +73,10 @@ export default {
 		ads() 
 		{
 			return this.$store.getters.ads
-		}
+		},
+		loading() {
+		return this.$store.getters.loading
+	}
 	}		
 }
 </script>
