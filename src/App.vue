@@ -71,27 +71,41 @@
   </v-app>
   </template>
 
+<style scoped>
+  .pointer {
+    cursor: pointer;
+  }
+</style>
+
 <script>
 export default {
     data() {
         return {
-
+          drawer: false,
+        }  
+    },
 computed: {
   error () {
     return this.$store.getters.error
-   }
   },
-      drawer: false,
-      links: [
-      {title:"Login", icon:"mdi-lock", url:"/login"},
-      {title:"Registration", icon:"mdi-account", url:"/registration"},
-      {title:"Orders", icon:"mdi-bookmark-multiple-outline",url:"/orders"},
-      {title:"New ad", icon:"mdi-note-plus-outline", url:"/new"},
-      {title:"My ads", icon:"mdi-view-list-outline", url:"/list"}
-      ]
-    }
+  isUserLoggedIn () {
+      return this.$store.getters.isUserLoggedIn
+},
+links () {
+      if (this.isUserLoggedIn) {
+        return [
+        {title:"Orders", icon:"mdi-bookmark-multiple-outline", url:"/orders"},
+        {title:"New ad", icon:"mdi-note-plus-outline", url:"/new"},
+        {title:"My ads", icon:"mdi-view-list-outline", url:"/list"}
+        ]
+      } else {
+        return [
+        {title:"Login", icon:"mdi-lock", url:"/login"},
+        {title:"Registration", icon:"mdi-face", url:"/registration"},
+        ]
+      }
+    },
   },
-
   methods: {
     closeError () {
       this.$store.dispatch('clearError')
@@ -100,8 +114,3 @@ computed: {
 };
 </script>
 
-<style scoped>
-  .pointer {
-    cursor: pointer;
-  }
-</style>
