@@ -4,11 +4,9 @@
             <v-flex xs12 sm6 offset-sm3>
                 <h1 class="text--secondary mb-3 mt-3">My ads</h1>
 
-               <v-card 
-                    class="elevation-10 mb-5"
-                    v-for="ad in myAds"
-                    :key="ad.id">
-
+                <v-card class="elevation-10 mb-5"
+                v-for="ad in myAds"
+                :key="ad.id"
                 >
                     <v-layout row>
                         <v-flex xs4 class="pl-3">
@@ -43,10 +41,10 @@
 
 <script>
 export default {
-        computed: {
-                myAds(){
-                        return this.$store.getters.myAds
-                }
-        }
+    computed: {
+		myAds(){
+			return this.$store.getters.myAds
+		}
+	}
 }
 </script>

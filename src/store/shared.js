@@ -4,16 +4,16 @@ export default {
         error: null
     },
 	mutations: {
-        setLoading (state, playload) {
-            state.loading = playload
+        setLoading (state, payload) {
+            state.loading = payload
         },
-        setError (state, playload) {
-            state.error = playload
+        setError (state, payload) {
+            state.error = payload
         },
         clearError (state) {
             state.error = null
         }
-    },
+    },    
 	actions: {
         setLoading ({commit}, payload) {
             commit('setLoading', payload)
@@ -32,6 +32,5 @@ export default {
         error (state) {
             return state.error
         }
-    }
-    
+    }    
 }
